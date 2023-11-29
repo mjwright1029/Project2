@@ -1,6 +1,6 @@
 import csv
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtGui import *
 from gui import *
 
 
@@ -9,12 +9,28 @@ class Logic(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.villager_image.setText('Learn more about the canine villagers \nof Animal Crossing: New Horizons!')
+        font = QFont()
+        font.setPointSize(16)
+
+        self.villager_image.setFont(font)
+        self.villager_image.setText('Learn more about the canine villagers of Animal Crossing: New Horizons!')
+
+        self.name_label.setFont(font)
         self.name_label.setText('Name:')
+
+        self.gender_label.setFont(font)
         self.gender_label.setText('Gender: ')
+
+        self.personality_label.setFont(font)
         self.personality_label.setText('Personality: ')
+
+        self.hobby_label.setFont(font)
         self.hobby_label.setText('Hobby: ')
+
+        self.birthday_label.setFont(font)
         self.birthday_label.setText('Birthday: ')
+
+
         self.name_menue.addItems(['Bea', 'Benjamin', 'Biskit', 'Bones', 'Butch', 'Cherry', 'Cookie', 'Daisy',
                                   'Goldie', 'Lucky', 'Mac', 'Maddie', 'Marcel', 'Portia', 'Shep', 'Walker'])
         self.name_menue.currentTextChanged.connect(lambda: self.main())

@@ -59,6 +59,9 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
     <property name="openExternalLinks">
      <bool>true</bool>
     </property>
@@ -85,6 +88,9 @@
     <property name="text">
      <string>TextLabel</string>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="gender_label">
     <property name="geometry">
@@ -98,6 +104,9 @@
     <property name="text">
      <string>TextLabel</string>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="personality_label">
     <property name="geometry">
@@ -105,11 +114,14 @@
       <x>60</x>
       <y>490</y>
       <width>121</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="hobby_label">
@@ -124,18 +136,24 @@
     <property name="text">
      <string>TextLabel</string>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="birthday_label">
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>450</y>
+      <y>440</y>
       <width>121</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
