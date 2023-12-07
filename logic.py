@@ -41,7 +41,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.birthday_label.setText('Birthday: ')
 
         self.name_menu.addItems(['Bea', 'Benjamin', 'Biskit', 'Bones', 'Butch', 'Cherry', 'Cookie', 'Daisy',
-                                 'Goldie', 'Lucky', 'Mac', 'Maddie', 'Marcel', 'Portia', 'Shep', 'Walker'])
+                                 'Goldie', 'Lucky', 'Mac', 'Maddie', 'Marcel', 'Portia', 'Shep', 'Walker', 'error'])
         self.name_menu.setCurrentIndex(-1)
         self.name_menu.currentTextChanged.connect(lambda: self.update_info())
 
@@ -51,6 +51,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         :return: character's image, name, species, gender, personality, hobby, and birthday
         """
         villager_name = self.name_menu.currentText()
+        self.error_label.hide()
         try:
             with open('villagers.csv', 'r', newline='', encoding='utf-8') as csvfile:
                 content = csv.reader(csvfile, delimiter=',')
@@ -88,7 +89,6 @@ class Logic(QMainWindow, Ui_MainWindow):
             hobby = ''
             birthday = ''
             return villager_name, image, gender, personality, hobby, birthday
-
 
     def display_image(self, image: str) -> None:
         """
