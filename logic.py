@@ -22,6 +22,9 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.villager_image.setFont(font)
         self.villager_image.setText('Learn more about the canine villagers of Animal Crossing: New Horizons!')
 
+        self.error_label.setFont(font)
+        self.error_label.hide()
+
         self.name_label.setFont(font)
         self.name_label.setText('Name:')
 
@@ -49,7 +52,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         """
         villager_name = self.name_menu.currentText()
         try:
-            with open('villager.csv', 'r', newline='', encoding='utf-8') as csvfile:
+            with open('villagers.csv', 'r', newline='', encoding='utf-8') as csvfile:
                 content = csv.reader(csvfile, delimiter=',')
 
                 for row in content:
@@ -61,8 +64,12 @@ class Logic(QMainWindow, Ui_MainWindow):
                         hobby = row[8]
                         birthday = row[9]
                         return villager_name, image, gender, personality, hobby, birthday
+                raise NameError
+
 
         except FileNotFoundError:
+            self.error_label.show()
+            self.error_label.setText('Sorry, file not found')
             villager_name = ''
             image = 'images/icon.png'
             gender = ''
@@ -71,13 +78,35 @@ class Logic(QMainWindow, Ui_MainWindow):
             birthday = ''
             return villager_name, image, gender, personality, hobby, birthday
 
+        except NameError:
+            self.error_label.show()
+            self.error_label.setText('Sorry, villager not found')
+            villager_name = ''
+            image = 'images/icon.png'
+            gender = ''
+            personality = ''
+            hobby = ''
+            birthday = ''
+            return villager_name, image, gender, personality, hobby, birthday
+
+
     def display_image(self, image: str) -> None:
         """
         Method to display the correct image to the user
         :param image: the URL of the required image
         """
-        pixmap = QPixmap(image)
-        self.villager_image.setPixmap(pixmap)
+        try:
+            pixmap = QPixmap(image)
+            if pixmap.isNull():
+                print("null")
+                raise FileNotFoundError
+            self.villager_image.setPixmap(pixmap)
+        except FileNotFoundError:
+            image = 'images/icon.png'
+            pixmap = QPixmap(image)
+            self.villager_image.setPixmap(pixmap)
+            self.error_label.show()
+            self.error_label.setText('Sorry, image not found')
 
     def display_info(self, name: str, gender: str, personality: str, hobby: str, birthday: str) -> None:
         """
