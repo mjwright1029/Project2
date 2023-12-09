@@ -41,7 +41,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.birthday_label.setText('Birthday: ')
 
         self.name_menu.addItems(['Bea', 'Benjamin', 'Biskit', 'Bones', 'Butch', 'Cherry', 'Cookie', 'Daisy',
-                                 'Goldie', 'Lucky', 'Mac', 'Maddie', 'Marcel', 'Portia', 'Shep', 'Walker', 'error'])
+                                 'Goldie', 'Lucky', 'Mac', 'Maddie', 'Marcel', 'Portia', 'Shep', 'Walker'])
         self.name_menu.setCurrentIndex(-1)
         self.name_menu.currentTextChanged.connect(lambda: self.update_info())
 
